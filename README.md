@@ -16,7 +16,7 @@ WiseKB Managmenet Platform drastically simplifies management of Apache UIMA & Ha
 
 ## Build Status
 
-[![Build Status](https://api.travis-ci.org/EXEM-OSS/flamingo.svg?branch=master)](https://travis-ci.org/exobrain-wisekb/wisekb-management-platform)
+[![Build Status](https://api.travis-ci.org/exobrain-wisekb/wisekb-management-platform.svg?branch=master)](https://travis-ci.org/exobrain-wisekb/wisekb-management-platform)
 
 ## License
 
