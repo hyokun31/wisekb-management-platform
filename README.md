@@ -76,3 +76,6 @@ Use following command for deploying site :
 # mvn site:stage
 # mvn site:deploy
 ```
+### Refereneces
+
+* Travis CI : https://travis-ci.org/exobrain-wisekb/wisekb-management-platform
