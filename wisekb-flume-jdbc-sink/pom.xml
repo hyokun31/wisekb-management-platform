@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>wisekb.flume.sink.jdbc</groupId>
+    <artifactId>wisekb-flume-jdbc-sink</artifactId>
+    <packaging>jar</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name>Flume Sink for UIMA Logging</name>
+
+    <properties>
+        <!-- Project -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+        <output.encoding>UTF-8</output.encoding>
+        <javadoc.locale>ko_KR</javadoc.locale>
+        <java.version>1.8</java.version>
+
+        <spring.version>4.2.1.RELEASE</spring.version>
+        <mysql.version>5.1.36</mysql.version>
+        <log4jdbc.remix.version>0.2.7</log4jdbc.remix.version>
+        <hikaricp.version>2.4.1</hikaricp.version>
+        <flume.version>1.7.0</flume.version>
+
+        <junit.version>4.11</junit.version>
+        <easymock.version>3.2</easymock.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${output.encoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!-- ================= -->
+        <!--  Spring Framework -->
+        <!-- ================= -->
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- ============== -->
+        <!--  Apache Flume  -->
+        <!-- ============== -->
+
+        <dependency>
+            <groupId>org.apache.flume</groupId>
+            <artifactId>flume-ng-sdk</artifactId>
+            <version>${flume.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.flume</groupId>
+            <artifactId>flume-ng-configuration</artifactId>
+            <version>${flume.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.flume</groupId>
+            <artifactId>flume-ng-core</artifactId>
+            <version>${flume.version}</version>
+        </dependency>
+
+        <!-- =================== -->
+        <!--  JDBC Dependencies  -->
+        <!-- =================== -->
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Open Cloud Engine Maven Repository</name>
+            <url>http://maven.opencloudengine.org/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <licenses>
+        <license>
+            <name>Apache License Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>fharenheit</id>
+            <name>Byoung Gon, Kim</name>
+            <roles>
+                <role>Manager</role>
+            </roles>
+            <organization>EXEM</organization>
+            <email>fharenheit@gmail.com</email>
+        </developer>
+    </developers>
+</project>
+
