@@ -5,8 +5,7 @@
     <groupId>wisekb.flume.sink.jdbc</groupId>
     <artifactId>wisekb-flume-jdbc-sink</artifactId>
     <packaging>jar</packaging>
-    <version>0.0.1-SNAPSHOT</version>
-
+    <version>1.0-SNAPSHOT</version>
     <name>Flume Sink for UIMA Logging</name>
 
     <properties>
