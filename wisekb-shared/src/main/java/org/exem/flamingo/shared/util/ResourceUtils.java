@@ -36,7 +36,7 @@ import java.net.URLDecoder;
  *
  * @author Byoung Gon, Kim
  * @see {@link org.springframework.util.ResourceUtils}
- * @since 2.0
+ * @since 0.1
  */
 public class ResourceUtils {
 

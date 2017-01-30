@@ -23,7 +23,7 @@ import java.util.List;
  * Regular Expression Pattern 기반 문자열 패턴 필터.
  *
  * @author Byoung Gon, Kim
- * @version 0.3
+ * @since 0.1
  */
 public interface RegExPatternFilter {
 

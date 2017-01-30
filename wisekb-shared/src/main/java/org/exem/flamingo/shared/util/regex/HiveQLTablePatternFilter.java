@@ -27,7 +27,7 @@ import java.util.regex.Pattern;
  *
  * @author Byoung Gon, Kim
  * @author Chiwan Park
- * @version 0.3
+ * @since 0.1
  */
 public class HiveQLTablePatternFilter implements RegExPatternFilter {
 

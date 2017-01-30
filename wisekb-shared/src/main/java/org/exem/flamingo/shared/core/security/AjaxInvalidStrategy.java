@@ -28,7 +28,7 @@ import java.io.IOException;
 
 /**
  * @author Hyo Kun, Park
- * @version 2.0
+ * @since 0.1
  */
 public class AjaxInvalidStrategy implements InvalidSessionStrategy {
 

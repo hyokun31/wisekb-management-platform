@@ -21,7 +21,7 @@ package org.exem.flamingo.shared.core.repository;
  * Persistence Object의 공통 CRUD를 정의한 Repository.
  *
  * @author Byoung Gon, Kim
- * @since 2.0
+ * @since 0.1
  */
 public interface PersistentRepository<D, P> {
 

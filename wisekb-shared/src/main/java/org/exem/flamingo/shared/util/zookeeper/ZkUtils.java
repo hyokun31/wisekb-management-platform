@@ -33,7 +33,7 @@ import java.util.List;
  * 이 클래스는 ZooKeeper를 편리하게 사용하기 위해서 Apache Curator를 이용한다.
  *
  * @author Edward KIM
- * @version 0.1
+ * @since 0.1
  */
 public class ZkUtils {
 

@@ -23,7 +23,7 @@ import org.exem.flamingo.shared.util.DateUtils;
  * HTTP Body를 전체적으로 통제하는 서비스에서 발생하는 예외.
  *
  * @author Byoung Gon, Kim
- * @since 2.0
+ * @since 0.1
  */
 public class WholeBodyException extends RuntimeException {
 

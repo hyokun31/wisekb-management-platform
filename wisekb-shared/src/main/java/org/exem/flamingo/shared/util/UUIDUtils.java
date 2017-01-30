@@ -28,7 +28,7 @@ import java.util.UUID;
  * </p>
  *
  * @author Byoung Gon, Kim
- * @since 2.0
+ * @since 0.1
  */
 public class UUIDUtils {
 

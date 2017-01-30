@@ -23,7 +23,7 @@ import org.apache.commons.lang.math.JVMRandom;
  * JVM에 따라 임의의 값을 생성하는 UUID Generator.
  *
  * @author Byoung Gon, Kim
- * @since 2.0
+ * @since 0.1
  */
 public class JVMIDUtils {
 

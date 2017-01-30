@@ -27,7 +27,7 @@ import java.util.*;
  * String Utility.
  *
  * @author Byoung Gon, Kim
- * @since 2.0
+ * @since 0.1
  */
 public class StringUtils {
 

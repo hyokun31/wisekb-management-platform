@@ -27,7 +27,7 @@ import java.io.PrintWriter;
 
 /**
  * @author Byoung Gon, Kim
- * @version 2.0
+ * @since 0.1
  */
 public class RestAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 

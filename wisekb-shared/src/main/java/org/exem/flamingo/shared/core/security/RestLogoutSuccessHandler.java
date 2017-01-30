@@ -25,7 +25,7 @@ import java.io.IOException;
 
 /**
  * @author Byoung Gon, Kim
- * @version 2.0
+ * @since 0.1
  */
 public class RestLogoutSuccessHandler implements LogoutSuccessHandler {
 

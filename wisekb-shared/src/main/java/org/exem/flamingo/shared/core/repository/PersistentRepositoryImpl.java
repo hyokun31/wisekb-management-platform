@@ -21,7 +21,7 @@ package org.exem.flamingo.shared.core.repository;
  * Persistence Object의 공통 CRUD를 제공하는 Repository의 구현체.
  *
  * @author Byoung Gon, Kim
- * @since 2.0
+ * @since 0.1
  */
 public abstract class PersistentRepositoryImpl<D, P> extends DefaultSqlSessionDaoSupport implements PersistentRepository<D, P> {
 

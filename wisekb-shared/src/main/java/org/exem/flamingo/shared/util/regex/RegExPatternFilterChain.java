@@ -23,7 +23,7 @@ import java.util.List;
  * Regular Expression Pattern 기반 문자열 패턴 필터를 하나 이상 적용할 수 있는 필터 체인.
  *
  * @author Byoung Gon, Kim
- * @version 0.3
+ * @since 0.1
  */
 public interface RegExPatternFilterChain extends RegExPatternFilter {
 

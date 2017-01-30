@@ -23,7 +23,7 @@ import org.springframework.core.io.Resource;
  * Java Classpath Utilty.
  *
  * @author Byoung Gon, Kim
- * @since 2.0
+ * @since 0.1
  */
 public class ClasspathUtils {
 

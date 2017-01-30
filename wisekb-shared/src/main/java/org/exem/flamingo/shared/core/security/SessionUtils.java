@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
  * 이 유틸리티는 Session Filter의 도움없이 자체적으로 동작할 수 없음.
  *
  * @author Byoung Gon, Kim
- * @version 2.0
+ * @since 0.1
  */
 public class SessionUtils {
 

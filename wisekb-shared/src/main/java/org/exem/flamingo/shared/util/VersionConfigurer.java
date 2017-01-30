@@ -45,15 +45,7 @@ public class VersionConfigurer implements javax.servlet.ServletContextListener {
             IOUtils.closeQuietly(inputStream);
         }
 
-        // See : http://patorjk.com/software/taag/#p=display&f=Slant&t=Flamingo%202
         StringBuilder builder = new StringBuilder();
-        builder.append("    ________                _                      ___ \n" +
-                "   / ____/ /___ _____ ___  (_)___  ____ _____     |__ \\\n" +
-                "  / /_  / / __ `/ __ `__ \\/ / __ \\/ __ `/ __ \\    __/ /\n" +
-                " / __/ / / /_/ / / / / / / / / / / /_/ / /_/ /   / __/ \n" +
-                "/_/   /_/\\__,_/_/ /_/ /_/_/_/ /_/\\__, /\\____/   /____/ \n" +
-                "                                /____/                 \n" +
-                "                                                ");
 
         printHeader(builder, "Application Information");
         Properties appProps = new Properties();
