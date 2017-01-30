@@ -1,4 +1,4 @@
-package exem.flamingo.agent.oz.jpa;
+package wisekb.agent.oz;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.HttpExchange;
