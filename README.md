@@ -3,7 +3,7 @@
 ## Introduction
 
 WiseKB Management Platform is a resource management framework for Exobrain WiseKB.
-WiseKB Managmenet Platform drastically simplifies management of Apache UIMA & Hadoop EcoSystem through the following features.
+WiseKB Management Platform drastically simplifies management of Apache UIMA & Hadoop EcoSystem through the following features.
 
 ## Feature
 
@@ -13,10 +13,6 @@ WiseKB Managmenet Platform drastically simplifies management of Apache UIMA & Ha
 * Oozie Bundle Management
 * HDFS Browser
 * YARN Monitoring
-
-## Build Status
-
-[![Build Status](https://api.travis-ci.org/exobrain-wisekb/wisekb-management-platform.svg?branch=master)](https://travis-ci.org/exobrain-wisekb/wisekb-management-platform)
 
 ## License
 
@@ -76,6 +72,3 @@ Use following command for deploying site :
 # mvn site:stage
 # mvn site:deploy
 ```
-### Refereneces
-
-* Travis CI : https://travis-ci.org/exobrain-wisekb/wisekb-management-platform
