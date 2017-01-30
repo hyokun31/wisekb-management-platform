@@ -19,7 +19,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.SystemUtils;
 import org.apache.hadoop.fs.ContentSummary;
 import org.exem.flamingo.agent.nn.Namenode2AgentService;
-import org.exem.flamingo.agent.nn.hdfs.HdfsFileInfo;
+import wisekb.agent.nn.hdfs.HdfsFileInfo;
 import org.exem.flamingo.shared.core.exception.ServiceException;
 import org.exem.flamingo.shared.model.rest.FileInfo;
 import org.exem.flamingo.shared.util.FileUtils;

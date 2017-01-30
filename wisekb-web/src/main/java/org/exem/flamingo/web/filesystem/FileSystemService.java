@@ -16,7 +16,7 @@
 package org.exem.flamingo.web.filesystem;
 
 import org.apache.hadoop.fs.ContentSummary;
-import org.exem.flamingo.agent.nn.hdfs.HdfsFileInfo;
+import wisekb.agent.nn.hdfs.HdfsFileInfo;
 import org.exem.flamingo.shared.model.rest.FileInfo;
 
 import java.io.IOException;

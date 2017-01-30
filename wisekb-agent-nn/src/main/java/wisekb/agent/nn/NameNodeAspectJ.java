@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.exem.flamingo.agent.nn;
+package wisekb.agent.nn;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hdfs.server.namenode.Namenode2Agent;
@@ -47,7 +47,7 @@ public class NameNodeAspectJ {
      * {@link NamenodeAspect#aspectTargetMethod()} 의 target이 완료 되었을때 method 실행
      * @param joinPoint jointpoint
      */
-    @After("org.exem.flamingo.agent.nn.NameNodeAspectJ.aspectTargetMethod()")
+    @After("wisekb.agent.nn.NameNodeAspectJ.aspectTargetMethod()")
     public void afterInit(JoinPoint joinPoint) {
         Namenode2Agent.start(joinPoint.getThis(), joinPoint.getArgs());
     }

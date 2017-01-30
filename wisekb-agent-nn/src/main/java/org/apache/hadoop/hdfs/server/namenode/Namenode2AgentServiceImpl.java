@@ -25,9 +25,9 @@ import org.apache.hadoop.hdfs.server.blockmanagement.DatanodeManager;
 import org.apache.hadoop.hdfs.server.blockmanagement.NumberReplicas;
 import org.apache.hadoop.hdfs.util.ReadOnlyList;
 import org.apache.hadoop.util.Time;
-import org.exem.flamingo.agent.nn.Namenode2AgentService;
-import org.exem.flamingo.agent.nn.hdfs.HdfsBlockInfo;
-import org.exem.flamingo.agent.nn.hdfs.HdfsFileInfo;
+import wisekb.agent.nn.Namenode2AgentService;
+import wisekb.agent.nn.hdfs.HdfsBlockInfo;
+import wisekb.agent.nn.hdfs.HdfsFileInfo;
 import wisekb.shared.rest.FileInfo;
 
 import java.io.IOException;

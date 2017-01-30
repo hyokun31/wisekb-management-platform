@@ -34,8 +34,8 @@ import org.apache.hadoop.hdfs.server.datanode.CachingStrategy;
 import org.apache.hadoop.net.NetUtils;
 import org.apache.hadoop.security.token.Token;
 
-import org.exem.flamingo.agent.nn.hdfs.HdfsFileInfo;
-import org.exem.flamingo.agent.nn.hdfs.HdfsFileOnlyInfo;
+import wisekb.agent.nn.hdfs.HdfsFileInfo;
+import wisekb.agent.nn.hdfs.HdfsFileOnlyInfo;
 
 import wisekb.shared.util.HdfsUtils;
 import org.slf4j.Logger;

@@ -13,7 +13,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-package org.exem.flamingo.agent.nn.hdfs;
+package wisekb.agent.nn.hdfs;
 
 import org.apache.commons.lang.SystemUtils;
 import org.apache.hadoop.fs.ContentSummary;
@@ -26,11 +26,13 @@ import wisekb.shared.rest.FileInfo;
  * @author Byoung Gon, Kim
  * @since 0.1
  */
-public class HdfsFileOnlyInfo implements FileInfo {
+public class HdfsFileInfo implements FileInfo {
 
     private static final long serialVersionUID = 1;
 
     private String filename;
+
+    private String fullyQualifiedPath;
 
     private String path;
 
@@ -50,28 +52,41 @@ public class HdfsFileOnlyInfo implements FileInfo {
 
     private long modificationTime;
 
+    private long accessTime;
+
     private String permission;
 
     private long spaceQuota;
 
     private long spaceConsumed;
 
-    public HdfsFileOnlyInfo(FileStatus fileStatus, ContentSummary contentSummary) {
-        String qualifiedPath = fileStatus.getPath().toUri().getPath();
-        this.filename = isEmpty(getFilename(qualifiedPath)) ? getDirectoryName(qualifiedPath) : getFilename(qualifiedPath);
-        this.length = fileStatus.getLen();
-        this.path = getPath(qualifiedPath);
+    private long quota;
+
+    private long fileCount;
+
+    private long directoryCount;
+
+    public HdfsFileInfo(FileStatus fileStatus, ContentSummary contentSummary) {
+        this.fullyQualifiedPath = fileStatus.getPath().toUri().getPath();
+        this.filename = isEmpty(getFilename(fullyQualifiedPath)) ? getDirectoryName(fullyQualifiedPath) : getFilename(fullyQualifiedPath);
+        this.length = fileStatus.isFile() ? fileStatus.getLen() : contentSummary.getLength();
+        this.path = getPath(fullyQualifiedPath);
         this.directory = fileStatus.isDirectory();
-        this.modificationTime = fileStatus.getModificationTime();
         this.file = !fileStatus.isDirectory();
-        this.replication = fileStatus.getReplication();
         this.owner = fileStatus.getOwner();
         this.group = fileStatus.getGroup();
-        this.permission = fileStatus.getPermission().toString();
+        this.blockSize = fileStatus.getBlockSize();
+        this.replication = fileStatus.getReplication();
+        this.modificationTime = fileStatus.getModificationTime();
         if (contentSummary != null) {
             this.spaceConsumed = contentSummary.getSpaceConsumed();
             this.spaceQuota = contentSummary.getSpaceQuota();
+            this.quota = contentSummary.getQuota();
+            this.directoryCount = contentSummary.getDirectoryCount();
+            this.fileCount = contentSummary.getFileCount();
         }
+        this.accessTime = fileStatus.getAccessTime();
+        this.permission = fileStatus.getPermission().toString();
     }
 
     public static String getPath(String fullyQualifiedPath) {
@@ -108,7 +123,7 @@ public class HdfsFileOnlyInfo implements FileInfo {
 
     @Override
     public String getFullyQualifiedPath() {
-        return null;
+        return fullyQualifiedPath;
     }
 
     @Override
@@ -158,15 +173,59 @@ public class HdfsFileOnlyInfo implements FileInfo {
 
     @Override
     public long getAccessTime() {
-        return 0;
+        return accessTime;
     }
 
     public String getPermission() {
         return permission;
     }
 
+    public void setSpaceQuota(long spaceQuota) {
+        this.spaceQuota = spaceQuota;
+    }
+
+    public long getSpaceQuota() {
+        return spaceQuota;
+    }
+
+    public void setSpaceConsumed(long spaceConsumed) {
+        this.spaceConsumed = spaceConsumed;
+    }
+
+    public long getSpaceConsumed() {
+        return spaceConsumed;
+    }
+
+    public void setQuota(long quota) {
+        this.quota = quota;
+    }
+
+    public long getQuota() {
+        return quota;
+    }
+
+    public void setFileCount(long fileCount) {
+        this.fileCount = fileCount;
+    }
+
+    public long getFileCount() {
+        return fileCount;
+    }
+
+    public void setDirectoryCount(long directoryCount) {
+        this.directoryCount = directoryCount;
+    }
+
+    public long getDirectoryCount() {
+        return directoryCount;
+    }
+
     public void setFilename(String filename) {
         this.filename = filename;
+    }
+
+    public void setFullyQualifiedPath(String fullyQualifiedPath) {
+        this.fullyQualifiedPath = fullyQualifiedPath;
     }
 
     public void setPath(String path) {
@@ -205,23 +264,11 @@ public class HdfsFileOnlyInfo implements FileInfo {
         this.modificationTime = modificationTime;
     }
 
+    public void setAccessTime(long accessTime) {
+        this.accessTime = accessTime;
+    }
+
     public void setPermission(String permission) {
         this.permission = permission;
-    }
-
-    public long getSpaceQuota() {
-        return spaceQuota;
-    }
-
-    public void setSpaceQuota(long spaceQuota) {
-        this.spaceQuota = spaceQuota;
-    }
-
-    public long getSpaceConsumed() {
-        return spaceConsumed;
-    }
-
-    public void setSpaceConsumed(long spaceConsumed) {
-        this.spaceConsumed = spaceConsumed;
     }
 }

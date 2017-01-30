@@ -23,7 +23,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.InputStreamEntity;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.exem.flamingo.agent.nn.hdfs.HdfsFileInfo;
+import wisekb.agent.nn.hdfs.HdfsFileInfo;
 import org.exem.flamingo.shared.core.exception.ServiceException;
 import org.exem.flamingo.shared.core.exception.WholeBodyException;
 import org.exem.flamingo.shared.core.rest.Response;

@@ -9,7 +9,7 @@
 
     <bean name="namenode2Agent" class="org.springframework.remoting.httpinvoker.SimpleHttpInvokerServiceExporter">
         <property name="service" ref="namenode2AgentService"/>
-        <property name="serviceInterface" value="org.exem.flamingo.agent.nn.Namenode2AgentService"/>
+        <property name="serviceInterface" value="wisekb.agent.nn.Namenode2AgentService"/>
     </bean>
 
     <!-- ================ Massive File Transfer Service ================ -->
@@ -24,7 +24,7 @@
         Requestor에 값을 전달하기 위해서는 웹 서버가 필요하므로 웹 서버를 생성한다.
     -->
 
-    <bean id="simpleHttpHandler" class="org.exem.flamingo.agent.nn.SimpleHttpHandler"/>
+    <bean id="simpleHttpHandler" class="wisekb.agent.nn.SimpleHttpHandler"/>
 
     <!-- Http Web Server -->
     <bean id="httpServer" class="org.springframework.remoting.support.SimpleHttpServerFactoryBean">

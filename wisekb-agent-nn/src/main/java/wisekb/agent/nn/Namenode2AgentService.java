@@ -13,10 +13,10 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-package org.exem.flamingo.agent.nn;
+package wisekb.agent.nn;
 
 import org.apache.hadoop.fs.ContentSummary;
-import org.exem.flamingo.agent.nn.hdfs.HdfsFileInfo;
+import wisekb.agent.nn.hdfs.HdfsFileInfo;
 import wisekb.shared.rest.FileInfo;
 
 import java.io.IOException;
