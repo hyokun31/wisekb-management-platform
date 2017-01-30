@@ -12,6 +12,7 @@
 
     <artifactId>wisekb-web</artifactId>
     <packaging>war</packaging>
+    <name>Management Web</name>
 
     <properties>
         <aws.sdk.version>1.11.33</aws.sdk.version>
