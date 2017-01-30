@@ -1,4 +1,4 @@
 /**
  * Flamingo Collector Package
  */
-package org.exem.flamingo.collector;
+package wisekb.collector;
