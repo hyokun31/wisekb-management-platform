@@ -1,0 +1,185 @@
+/*
+ * Copyright 2012-2016 the Flamingo Community.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+@charset "utf-8";
+
+/*폰트 Montserrat 적용*/
+@import 'https://fonts.googleapis.com/css?family=Montserrat';
+
+@import url("style.css");
+@import url("icons.css");
+@import url("node-list.css");
+
+/*hidden*/
+#accessibility,.skipnavi { position: absolute ; width: 0px; height: 0px; font-size: 0px; line-height: 0px; overflow: hidden; visibility: hidden; text-indent: -1000px; }
+.hidden {display:none;}
+ 
+/*align*/
+.t_left{text-align:left;}
+.t_center{text-align:center;}
+.t_right{text-align:right;}
+
+/* float */
+.f_left {float:left !important;} 
+.f_right {float:right !important;}  
+.f_clear {clear:both} 
+.clear {overflow:hidden;_zoom:1; clear:both}
+
+/* none 시리즈 속성 정의 */
+.none_bor {border:none !important;}
+.none_bg {background:none !important;}
+.none_dp {display:none !important;}
+.none_ma {margin:0px !important;}
+.none_pa {padding:0px !important;}
+.none_clear {clear:both  !important;}
+.none_pb {border:none !important; padding:0px !important;}
+
+/* display */
+.block_dp {display:block}
+
+/* 공통패딩 */
+.pt5{padding-top:5px;} 
+.pt10{padding-top:10px;} 
+.pt15{padding-top:15px;} 
+.pt20{padding-top:20px;} 
+.pt25{padding-top:25px;} 
+.pt30{padding-top:30px;} 
+.pt35{padding-top:35px;} 
+.pt40{padding-top:40px;} 
+.pt50{padding-top:50px;} 
+.pt60{padding-top:60px;}
+
+.pb5{padding-bottom:5px;} 
+.pb10{padding-bottom:10px;} 
+.pb15{padding-bottom:15px;} 
+.pb20{padding-bottom:20px;} 
+.pb25{padding-bottom:25px;} 
+.pb30{padding-bottom:30px;} 
+.pb35{padding-bottom:35px;}
+.pb40{padding-bottom:40px;} 
+.pb40{padding-bottom:50px;} 
+.pb60{padding-bottom:60px;}
+
+.pl5{padding-left:5px;} 
+.pl10{padding-left:10px;} 
+.pl15{padding-left:15px;} 
+.pl20{padding-left:20px;} 
+.pl25{padding-left:25px;} 
+.pl30{padding-left:30px;} 
+.pl35{padding-left:35px;} 
+.pl40{padding-left:40px;}
+
+.pr5{padding-right:5px;} 
+.pr10{padding-right:10px;} 
+.pr15{padding-right:15px;} 
+.pr20{padding-right:20px;} 
+.pr25{padding-right:25px;} 
+.pr30{padding-right:30px;} 
+.pr35{padding-right:35px;}
+.pr40{padding-right:40px;}
+
+.padd5{padding:5px;} 
+.padd10{padding:10px;} 
+.padd15{padding:15px;} 
+.padd20{padding:20px;} 
+.padd25{padding:25px;} 
+.padd30{padding:30px;}
+.padd35{padding:35px;} 
+.padd40{padding:40px;}
+ 
+/* 공통마진 */
+.mt5{margin-top:5px;} 
+.mt10{margin-top:10px;} 
+.mt15{margin-top:15px;} 
+.mt20{margin-top:20px;} 
+.mt25{margin-top:25px;} 
+.mt30{margin-top:30px;}
+.mt35{margin-top:35px;}
+.mt40{margin-top:40px;}
+
+.mb5{margin-bottom:5px;} 
+.mb10{margin-bottom:10px;} 
+.mb15{margin-bottom:15px;} 
+.mb20{margin-bottom:20px;} 
+.mb25{margin-bottom:25px;} 
+.mb30{margin-bottom:30px;} 
+.mb35{margin-bottom:35px;} 
+.mb40{margin-bottom:40px;}
+
+.ml5{margin-left:5px;} 
+.ml10{margin-left:10px;} 
+.ml15{margin-left:15px;} 
+.ml20{margin-left:20px;} 
+.ml25{margin-left:25px;} 
+.ml30{margin-left:30px;} 
+.ml35{margin-left:35px;} 
+.ml40{margin-left:40px;}
+
+.mr5{margin-right:5px;} 
+.mr10{margin-right:10px;} 
+.mr15{margin-right:15px;} 
+.mr20{margin-right:20px;} 
+.mr25{margin-right:25px;} 
+.mr30{margin-right:30px;} 
+.mr35{margin-right:35px;} 
+.mr40{margin-right:40px;}
+
+.margin5{margin:5px;}
+.margin10{margin:10px;} 
+.margin15{margin:15px;} 
+.margin20{margin:20px;} 
+.margin25{margin:25px;} 
+.margin30{margin:30px;} 
+.margin35{margin:35px;}
+
+
+/* font style 시리즈 속성 정의 */
+.bold {font-weight:bold !important;}
+.underline { text-decoration:underline !important; }
+.f11 {font-size:11px !important;}
+a.wtxt{color:#FFFFFF;}
+
+.breadcrumb {
+    padding: 4px 15px;
+    margin: 0;
+    list-style: none;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+}
+.breadcrumb > li {
+    display: inline-block;
+}
+.breadcrumb > li + li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "/\00a0";
+}
+.breadcrumb > .active {
+    color: #777;
+}
+
+.breadcrumb > li > a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.breadcrumb-over {
+    cursor: pointer;
+}
+
+.panel-shadow {
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+}
+

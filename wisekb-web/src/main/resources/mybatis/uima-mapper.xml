@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.exem.flamingo.web.uima.UimaRepository">
+
+    <select id="selectUimaLog" parameterType="map" resultType="map">
+        SELECT LOG_PROCESS_ID,
+               LOG_PROCESS_TYPE,
+               LOG_LEVEL,
+               LOG_COLLECTION_READER,
+               LOG_IP,
+               LOG_ANNOTATOR_TYPE,
+               LOG_DATA,
+               LOG_DATE,
+               LOG_INDEX
+          FROM UIMA_LOG
+    </select>
+
+    <select id="selectCountByDate" parameterType="map" resultType="map">
+        SELECT COUNT(*) LOG_COUNT,
+               LOG_DATE
+        FROM UIMA_LOG
+        GROUP BY LOG_DATE
+        ORDER BY LOG_DATE ASC
+    </select>
+
+    <select id="selectAnnotatorTypeList" parameterType="map" resultType="map">
+        SELECT LOG_ANNOTATOR_TYPE
+        FROM UIMA_LOG
+        GROUP BY LOG_ANNOTATOR_TYPE
+    </select>
+
+</mapper>

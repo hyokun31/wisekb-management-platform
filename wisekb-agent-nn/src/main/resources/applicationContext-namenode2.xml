@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- ================ Namenode 2 Agent ================ -->
+
+    <bean id="namenode2AgentService" class="org.apache.hadoop.hdfs.server.namenode.Namenode2AgentServiceImpl"/>
+
+    <bean name="namenode2Agent" class="org.springframework.remoting.httpinvoker.SimpleHttpInvokerServiceExporter">
+        <property name="service" ref="namenode2AgentService"/>
+        <property name="serviceInterface" value="org.exem.flamingo.agent.nn.Namenode2AgentService"/>
+    </bean>
+
+    <!-- ================ Massive File Transfer Service ================ -->
+
+    <bean id="uploadService" class="org.apache.hadoop.hdfs.server.namenode.FileUploadHttpHandler"/>
+    <bean id="downloadService" class="org.apache.hadoop.hdfs.server.namenode.FileDownloadHttpHandler"/>
+
+    <!-- ================ Namenode Monitoring HTTP Server ================ -->
+
+    <!--
+        원격지(Flamingo Monitoring Agent)에서 이 API를 호출하면 실제로 Namenode에서 값을 꺼내와서 Requestor에 전달한다.
+        Requestor에 값을 전달하기 위해서는 웹 서버가 필요하므로 웹 서버를 생성한다.
+    -->
+
+    <bean id="simpleHttpHandler" class="org.exem.flamingo.agent.nn.SimpleHttpHandler"/>
+
+    <!-- Http Web Server -->
+    <bean id="httpServer" class="org.springframework.remoting.support.SimpleHttpServerFactoryBean">
+        <property name="contexts">
+            <map>
+                <entry key="/remote/agent/namenode2" value-ref="namenode2Agent"/>
+                <entry key="/remote/agent/transfer/upload" value-ref="uploadService"/>
+                <entry key="/remote/agent/transfer/download" value-ref="downloadService"/>
+                <entry key="/" value-ref="simpleHttpHandler"/>
+            </map>
+        </property>
+        <property name="shutdownDelay" value="2000"/>
+        <property name="port" value="10070"/>
+        <property name="hostname" value="0.0.0.0"/>
+    </bean>
+</beans>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.exem.flamingo.web.oozie.workflowdesigner.OozieWorkflowRepository">
+    <!-- =======================================-->
+    <!-- 1. Insert                              -->
+    <!-- =======================================-->
+
+    <insert id="insertWorkflow" parameterType="map">
+        INSERT INTO FL_WORKFLOW (
+            WORKFLOW_ID,
+            WORKFLOW_NAME,
+            VARIABLE,
+            WORKFLOW_XML,
+            DESIGNER_XML,
+            CREATE_DT,
+            STATUS,
+            TREE_ID,
+            USERNAME
+        )
+        VALUES (
+            #{workflowId},
+            #{workflowName},
+            #{variable},
+            #{workflowXml},
+            #{designerXml},
+            #{create},
+            #{status},
+            #{treeId},
+            #{username}
+        )
+    </insert>
+
+    <!-- =======================================-->
+    <!-- 2. Delete                              -->
+    <!-- =======================================-->
+
+    <update id="deleteWorkflow" parameterType="long">
+        DELETE FROM FL_WORKFLOW
+        WHERE ID = #{value}
+    </update>
+
+    <!-- =======================================-->
+    <!-- 3. Select                              -->
+    <!-- =======================================-->
+
+    <select id="selectByTreeId" resultType="map"  parameterType="string">
+        SELECT
+            ID as id,
+            WORKFLOW_ID as workflowId,
+            WORKFLOW_NAME as workflowName,
+            VARIABLE as variable,
+            WORKFLOW_XML as workflowXml,
+            DESIGNER_XML as designerXml,
+            CREATE_DT as createDate,
+            STATUS as status,
+            TREE_ID as treeId,
+            USERNAME as username
+        FROM FL_WORKFLOW
+		WHERE TREE_ID = #{value}
+    </select>
+
+    <select id="selectRecentWorkflow" resultType="map">
+        SELECT
+        ID as id,
+        WORKFLOW_ID as workflowId,
+        WORKFLOW_NAME as workflowName,
+        VARIABLE as variable,
+        WORKFLOW_XML as workflowXml,
+        DESIGNER_XML as designerXml,
+        CREATE_DT as createDate,
+        STATUS as status,
+        TREE_ID as treeId,
+        USERNAME as username
+        FROM FL_WORKFLOW
+        ORDER BY ID DESC
+        LIMIT 1
+    </select>
+
+    <select id="listWorkflows" resultType="map">
+        SELECT
+        ID as id,
+        WORKFLOW_ID as workflowId,
+        WORKFLOW_NAME as workflowName,
+        VARIABLE as variable,
+        WORKFLOW_XML as workflowXml,
+        DESIGNER_XML as designerXml,
+        CREATE_DT as createDate,
+        STATUS as status,
+        TREE_ID as treeId,
+        USERNAME as username
+        FROM FL_WORKFLOW
+    </select>
+
+    <!-- =======================================-->
+    <!-- 4. Update                              -->
+    <!-- ======================= ================-->
+
+    <update id="updateWorkflow" parameterType="map">
+        UPDATE
+        FL_WORKFLOW
+        SET
+        WORKFLOW_ID = #{workflowId},
+        WORKFLOW_NAME = #{workflowName},
+        VARIABLE = #{variable},
+        WORKFLOW_XML = #{workflowXml},
+        DESIGNER_XML = #{designerXml},
+        CREATE_DT = now(),
+        STATUS = #{status},
+        TREE_ID = #{treeId},
+        USERNAME = #{username}
+        WHERE TREE_ID = #{treeId}
+    </update>
+
+</mapper>
