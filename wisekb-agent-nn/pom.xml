@@ -39,8 +39,8 @@
                             <outputDirectory>${project.build.outputDirectory}</outputDirectory>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.exem.flamingo</groupId>
-                                    <artifactId>flamingo-shared</artifactId>
+                                    <groupId>wisekb</groupId>
+                                    <artifactId>wisekb-shared</artifactId>
                                 </artifactItem>
                                 <artifactItem>
                                     <groupId>org.springframework</groupId>

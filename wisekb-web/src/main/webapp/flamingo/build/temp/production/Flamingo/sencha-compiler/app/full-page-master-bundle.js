@@ -1,2 +1,2 @@
 // @tag full-page
-// @require /Users/user/projects/flamingo-master/flamingo-web/src/main/webapp/flamingo/app.js
+// @require /Users/Park/App/git/wisekb-management-platform/wisekb-web/src/main/webapp/flamingo/app.js
