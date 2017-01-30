@@ -35,21 +35,17 @@ public class JpaNativeQueryExecutorService implements Service {
     @Override
     public void init(Services services) throws ServiceException {
         LOG = XLog.getLog(JpaNativeQueryExecutorService.class);
-        LOG.info("[Flamingo] Start init.");
         objectMapper = new ObjectMapper();
         jpaService = services.get(JPAService.class);
 
         loadConfig();
-        LOG.info("[Flamingo] Finish init config.");
 
         if (!checkFunction()) {
             makeFunction();
         }
 
-        LOG.info("[Flamingo] Start Http Server.");
         startServer();
 
-        LOG.info("[Flamingo] Finish.");
     }
 
     @Override
