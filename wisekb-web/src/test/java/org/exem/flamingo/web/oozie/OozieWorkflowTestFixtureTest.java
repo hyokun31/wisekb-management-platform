@@ -1,8 +1,8 @@
 package org.exem.flamingo.web.oozie;
 
 import freemarker.template.Configuration;
-import org.exem.flamingo.web.util.FreeMarkerUtils;
-import org.exem.flamingo.web.util.XmlFormatter;
+import wisekb.web.util.FreeMarkerUtils;
+import wisekb.web.util.XmlFormatter;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

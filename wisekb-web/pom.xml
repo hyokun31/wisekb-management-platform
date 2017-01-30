@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-		    <groupId>wisekb</groupId>
-		    <groupId>wisekb</groupId>
+        <groupId>wisekb</groupId>
+        <artifactId>wisekb</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
@@ -37,9 +37,11 @@
                                 <get dest="${basedir}/target/${project.artifactId}-${project.version}/flamingo/resources/ext">
                                     <url url="http://fontawesome.io/assets/font-awesome-4.7.0.zip"/>
                                 </get>
-                                <unzip src="${basedir}/target/${project.artifactId}-${project.version}/flamingo/resources/ext/font-awesome-4.7.0.zip" dest="${basedir}/target/${project.artifactId}-${project.version}/flamingo/resources/ext"/>
+                                <unzip src="${basedir}/target/${project.artifactId}-${project.version}/flamingo/resources/ext/font-awesome-4.7.0.zip"
+                                       dest="${basedir}/target/${project.artifactId}-${project.version}/flamingo/resources/ext"/>
                                 <move todir="${basedir}/target/${project.artifactId}-${project.version}/flamingo/resources/ext/font-awesome">
-                                    <fileset dir="${basedir}/target/${project.artifactId}-${project.version}/flamingo/resources/ext/font-awesome-4.7.0"/>
+                                    <fileset
+                                            dir="${basedir}/target/${project.artifactId}-${project.version}/flamingo/resources/ext/font-awesome-4.7.0"/>
                                 </move>
                                 <delete file="${basedir}/target/${project.artifactId}-${project.version}/flamingo/resources/ext/font-awesome-4.7.0.zip"/>
                             </target>
@@ -88,9 +90,9 @@
         <!-- ========== -->
 
         <dependency>
-						<groupId>wisekb</groupId>
-						<artifactId>wisekb-shared</artifactId>
-            <version>${flamingo.version}</version>
+            <groupId>wisekb</groupId>
+            <artifactId>wisekb-shared</artifactId>
+            <version>${wisekb.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.hadoop</groupId>
@@ -108,9 +110,9 @@
         </dependency>
 
         <dependency>
-						<groupId>wisekb</groupId>
+            <groupId>wisekb</groupId>
             <artifactId>wisekb-agent-nn</artifactId>
-            <version>${flamingo.version}</version>
+            <version>${wisekb.version}</version>
         </dependency>
 
         <!-- ================== -->

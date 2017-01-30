@@ -39,7 +39,7 @@
     <!-- ========================= -->
 
     <listener>
-        <listener-class>org.exem.flamingo.web.util.ApplicationInformationDisplayContextListener</listener-class>
+        <listener-class>wisekb.web.util.ApplicationInformationDisplayContextListener</listener-class>
     </listener>
 
     <listener>
