@@ -1,5 +1,5 @@
 $app-name:  dynamic( 'Flamingo' );
-$image-search-path: '/Users/user/projects/flamingo-master/flamingo-web/src/main/webapp/flamingo/build/production/Flamingo/resources';
+$image-search-path: '/Users/Park/App/git/wisekb-management-platform/wisekb-web/src/main/webapp/flamingo/build/production/Flamingo/resources';
 $theme-name:  dynamic( 'theme-triton' );
 $include-ext-abstractcomponent: dynamic(true);;
 $include-ext-abstractcontainer: dynamic(true);;
@@ -1214,6 +1214,8 @@ $include-flamingo-view-s3browser-upload-object: dynamic(true);;
 $include-flamingo-view-s3browser-upload-uploadcontroller: dynamic(true);;
 $include-flamingo-view-s3browser-upload-uploadmodel: dynamic(true);;
 $include-flamingo-view-uima-uima: dynamic(true);;
+$include-flamingo-view-uima-uimacontroller: dynamic(true);;
+$include-flamingo-view-uima-uimamodel: dynamic(true);;
 $include-flamingo-view-util-cronparser: dynamic(true);;
 $include-flamingo-view-util-date: dynamic(true);;
 $include-flamingo-view-util-iterator: dynamic(true);;
