@@ -17,7 +17,7 @@ package org.exem.flamingo.agent.nn.hdfs;
 
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.fs.PathFilter;
-import org.exem.flamingo.shared.core.exception.ServiceException;
+import wisekb.shared.core.exception.ServiceException;
 import org.slf4j.helpers.MessageFormatter;
 
 import java.io.IOException;

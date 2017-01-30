@@ -15,10 +15,10 @@
  */
 package org.apache.hadoop.hdfs.server.namenode;
 
-import org.exem.flamingo.shared.core.exception.ServiceException;
-import org.exem.flamingo.shared.model.rest.FileInfo;
-import org.exem.flamingo.shared.util.ExceptionUtils;
-import org.exem.flamingo.shared.util.FileUtils;
+import wisekb.shared.core.exception.ServiceException;
+import wisekb.shared.rest.FileInfo;
+import wisekb.shared.util.ExceptionUtils;
+import wisekb.shared.util.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
@@ -37,7 +37,7 @@ import org.apache.hadoop.security.token.Token;
 import org.exem.flamingo.agent.nn.hdfs.HdfsFileInfo;
 import org.exem.flamingo.agent.nn.hdfs.HdfsFileOnlyInfo;
 
-import org.exem.flamingo.shared.util.HdfsUtils;
+import wisekb.shared.util.HdfsUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.helpers.MessageFormatter;

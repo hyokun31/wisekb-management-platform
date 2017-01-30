@@ -15,7 +15,7 @@
  */
 package org.apache.hadoop.hdfs.server.namenode;
 
-import org.exem.flamingo.shared.core.exception.ServiceException;
+import wisekb.shared.core.exception.ServiceException;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.apache.commons.io.IOUtils;

@@ -5,7 +5,7 @@
 
     <bean id="string" class="java.lang.String"/>
 
-    <bean id="objectMapper" class="org.exem.flamingo.shared.util.ObjectMapperFactoryBean">
+    <bean id="objectMapper" class="wisekb.shared.util.ObjectMapperFactoryBean">
         <property name="indentOutput" value="true"/>
     </bean>
 

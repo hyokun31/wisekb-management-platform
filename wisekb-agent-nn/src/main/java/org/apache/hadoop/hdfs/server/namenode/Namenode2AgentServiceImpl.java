@@ -28,7 +28,7 @@ import org.apache.hadoop.util.Time;
 import org.exem.flamingo.agent.nn.Namenode2AgentService;
 import org.exem.flamingo.agent.nn.hdfs.HdfsBlockInfo;
 import org.exem.flamingo.agent.nn.hdfs.HdfsFileInfo;
-import org.exem.flamingo.shared.model.rest.FileInfo;
+import wisekb.shared.rest.FileInfo;
 
 import java.io.IOException;
 import java.io.PrintWriter;

@@ -18,7 +18,7 @@ package org.exem.flamingo.agent.nn.hdfs;
 import org.apache.commons.lang.SystemUtils;
 import org.apache.hadoop.fs.ContentSummary;
 import org.apache.hadoop.fs.FileStatus;
-import org.exem.flamingo.shared.model.rest.FileInfo;
+import wisekb.shared.rest.FileInfo;
 
 /**
  * HDFS의 파일 메타 정보.
