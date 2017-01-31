@@ -316,10 +316,7 @@ Ext.define('Flamingo.view.workflowdesigner.editor.AceEditor', {
         var lineCount = Ext.create('Ext.toolbar.TextItem', {text: format('Lines\: {0}' + 0)});
 
         Ext.apply(me, {
-            tbar: toolbar,
-            bbar: Ext.create('Flamingo2.view.component.StatusBar', {
-                items: [lineCount, wordCount]
-            })
+            tbar: toolbar
         });
 
         // 생성자를 통해서 값이 넘어오면 설정한다.
