@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- ================ Resource Manager Monitoring API ================ -->
+
+    <bean id="resourceManagerApi"
+          class="org.apache.hadoop.yarn.server.resourcemanager.ResourceManagerAgentServiceImpl"/>
+
+    <bean name="resourceManagerAgent" class="org.springframework.remoting.httpinvoker.SimpleHttpInvokerServiceExporter">
+        <property name="service" ref="resourceManagerApi"/>
+        <property name="serviceInterface"
+                  value="wisekb.agent.rm.ResourceManagerAgentService"/>
+    </bean>
+
+    <!-- ================ Resource Manager Monitoring HTTP Server ================ -->
+
+    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="3"/>
+        <property name="maxPoolSize" value="3"/>
+        <property name="queueCapacity" value="25"/>
+    </bean>
+
+    <bean id="simpleHttpHandler" class="wisekb.agent.rm.SimpleHttpHandler"/>
+
+    <!--
+        원격지(Collector)에서 이 API를 호출하면 실제로 ResourceManager에서 값을 꺼내와서 Requestor에 전달한다.
+        Requestor에 값을 전달하기 위해서는 웹 서버가 필요하므로 웹 서버를 생성한다.
+    -->
+    <bean id="httpServer" class="org.springframework.remoting.support.SimpleHttpServerFactoryBean">
+        <property name="contexts">
+            <map>
+                <entry key="/remote/agent/resourcemanager" value-ref="resourceManagerAgent"/>
+                <entry key="/" value-ref="simpleHttpHandler"/>
+            </map>
+        </property>
+        <property name="executor" ref="taskExecutor"/>
+        <property name="shutdownDelay" value="2000"/>
+        <property name="port" value="18032"/>
+        <property name="hostname" value="0.0.0.0"/>
+    </bean>
+</beans>

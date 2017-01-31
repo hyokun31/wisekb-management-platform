@@ -3,7 +3,7 @@
 <aspectj>
     <weaver options="-verbose">
         <include within="org.apache.hadoop.hdfs.server.namenode.*"/>
-        <include within="org.exem.flamingo.agent.nn.*"/>
+        <include within="wisekb.agent.nn.*"/>
     </weaver>
     <aspects>
         <aspect name="wisekb.agent.nn.NameNodeAspectJ"/>

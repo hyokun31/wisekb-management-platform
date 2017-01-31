@@ -1,0 +1,15 @@
+<!DOCTYPE aspectj PUBLIC
+    "-//AspectJ//DTD//EN" "http://www.eclipse.org/aspectj/dtd/aspectj.dtd">
+<!-- aspectj 설정은 META-INF/aop.xml로 암묵적으로 fix됨. -->
+<aspectj>
+    <!-- -verbose 옵션으로 weaving process 정보 출력 -->
+    <weaver options="-verbose">
+        <!-- 아래 package를 weave. -->
+        <include within="org.apache.hadoop.yarn.server.resourcemanager.*"/>
+        <include within="wisekb.agent.rm.*"/>
+    </weaver>
+    <aspects>
+        <!-- aspect 정의 -->
+        <aspect name="wisekb.agent.rm.ResourceManagerAspectJ"/>
+    </aspects>
+</aspectj>
