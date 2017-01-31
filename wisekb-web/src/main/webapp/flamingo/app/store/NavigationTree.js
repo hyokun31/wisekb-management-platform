@@ -17,6 +17,24 @@ Ext.define('Flamingo.store.NavigationTree', {
                 leaf: true
             },
             {
+                text: 'Apache Hadoop',
+                iconCls: 'fa fa-database',
+                children: [
+                    {
+                        text: 'Yarn',
+                        rowCls: 'row-has-noicon',
+                        viewType: 'yarnapplication',
+                        leaf: true
+                    },
+                    {
+                        text: 'MapReduce',
+                        rowCls: 'row-has-noicon',
+                        viewType: 'mapreduce',
+                        leaf: true
+                    }
+                ]
+            },
+            {
                 text: 'Apache Oozie',
                 iconCls: 'fa fa-area-chart',
                 children: [

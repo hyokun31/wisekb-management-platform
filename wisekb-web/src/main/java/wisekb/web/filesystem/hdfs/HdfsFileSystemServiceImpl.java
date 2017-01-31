@@ -33,6 +33,7 @@ import wisekb.shared.util.zookeeper.ZkHaUtils;
 import wisekb.web.configuration.ConfigurationHelper;
 import wisekb.web.filesystem.FileSystemService;
 import wisekb.web.remote.RemoteInvocation;
+import wisekb.web.util.AgentUtil;
 
 import java.io.IOException;
 import java.util.*;
@@ -48,26 +49,14 @@ public class HdfsFileSystemServiceImpl extends RemoteInvocation implements FileS
 
     private int MAX_RANGE_COUNT = 10;
 
-    @Value("#{hadoop['namenode.agent.address']}")
-    private String namenodeAgentAddress;
-
-    @Value("#{hadoop['namenode.agent.port']}")
-    private String namenodeAgentPort;
-
-    @Value("#{hadoop['namenode.agent.ha']}")
-    private Boolean namenodeHa;
-
-    @Value("#{hadoop['zookeeper.quorum']}")
-    private String zookeeperQuorum;
-
-    @Value("#{hadoop['namenode.agent.znode']}")
-    private String namenodeZnode;
-
     @Autowired
     ConfigurationHelper configurationHelper;
 
     @Autowired
     HdfsBrowserRepository repository;
+
+    @Autowired
+    AgentUtil agentUtil;
 
     /**
      * SLF4J Logging
@@ -574,14 +563,6 @@ public class HdfsFileSystemServiceImpl extends RemoteInvocation implements FileS
      * @return {@link Namenode2AgentService}
      */
     private Namenode2AgentService getNamenode2AgentService() {
-        String remoteServiceUrl;
-
-        if (namenodeHa.booleanValue()) {
-            remoteServiceUrl = this.getRemoteServiceUrl(ZkHaUtils.getActiveNnHost(zookeeperQuorum, namenodeZnode), Integer.parseInt(namenodeAgentPort), NAMENODE_SERVICE);
-        } else {
-            remoteServiceUrl = this.getRemoteServiceUrl(namenodeAgentAddress, Integer.parseInt(namenodeAgentPort), NAMENODE_SERVICE);
-        }
-
-        return this.getRemoteService(remoteServiceUrl, Namenode2AgentService.class);
+        return agentUtil.getNamenode2AgentService();
     }
 }

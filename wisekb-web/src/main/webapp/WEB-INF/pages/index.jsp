@@ -41,5 +41,25 @@
     <!-- Code Mirror -->
     <script type="text/javascript" src="/resources/lib/codemirror-5.1/lib/codemirror.js"></script>
 
+    <!-- Highcharts -->
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/highcharts/highcharts.src.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/highcharts/highcharts-more.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/highcharts/modules/heatmap.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/highcharts/modules/no-data-to-display.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/highcharts/modules/solid-gauge.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/highcharts/modules/treemap.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/highcharts/customEvents.js"></script>
+
+    <script type="text/javascript">
+        var message;
+        $.ajax({
+            url: '${pageContext.request.contextPath}/resources/bundle.json',
+            success: function (content) {
+                message = new bundle(content);
+            },
+            async: false
+        });
+    </script>
+
     <script id="microloader" data-app="579ca282-9238-45bf-add6-453515670ad7" type="text/javascript" src="bootstrap.js"></script>
 </head>

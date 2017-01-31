@@ -1,6 +1,7 @@
 $app-name:  dynamic( 'Flamingo' );
 $image-search-path: '/Users/park/App/git/wisekb-management-platform/wisekb-web/src/main/webapp/flamingo/build/production/Flamingo/resources';
 $theme-name:  dynamic( 'theme-triton' );
+$include-app-util-webbrowser: dynamic(true);;
 $include-ext-abstractcomponent: dynamic(true);;
 $include-ext-abstractcontainer: dynamic(true);;
 $include-ext-abstractmanager: dynamic(true);;
@@ -1074,7 +1075,35 @@ $include-ext-view-view: dynamic(true);;
 $include-ext-window-messagebox: dynamic(true);;
 $include-ext-window-toast: dynamic(true);;
 $include-ext-window-window: dynamic(true);;
+$include-fem-override-toast: dynamic(true);;
+$include-fem-override-data-store: dynamic(true);;
+$include-fem-override-grid-panel: dynamic(true);;
+$include-fem-override-menu-item: dynamic(true);;
+$include-fem-override-window-window: dynamic(true);;
 $include-flamingo-application: dynamic(true);;
+$include-flamingo-definer: dynamic(true);;
+$include-flamingo-component-spinner: dynamic(true);;
+$include-flamingo-component-websocket: dynamic(true);;
+$include-flamingo-component-websocketproxy: dynamic(true);;
+$include-flamingo-component-websocketproxycontroller: dynamic(true);;
+$include-flamingo-component-combo-comcombo: dynamic(true);;
+$include-flamingo-component-combo-comcombocontroller: dynamic(true);;
+$include-flamingo-component-combo-combomodel: dynamic(true);;
+$include-flamingo-component-editor-abstracteditor: dynamic(true);;
+$include-flamingo-component-editor-editormixin: dynamic(true);;
+$include-flamingo-component-editor-editorpanel: dynamic(true);;
+$include-flamingo-component-highcharts-treemap: dynamic(true);;
+$include-flamingo-component-skins-skins: dynamic(true);;
+$include-flamingo-component-skins-skinscontroller: dynamic(true);;
+$include-flamingo-component-skins-skinsmodel: dynamic(true);;
+$include-flamingo-component-timeprogress-timeprogress: dynamic(true);;
+$include-flamingo-component-timeprogress-timeprogresscontroller: dynamic(true);;
+$include-flamingo-component-timeprogress-timeprogressmodel: dynamic(true);;
+$include-flamingo-model-hadoop-namenodeinfo: dynamic(true);;
+$include-flamingo-model-hadoop-mapreduce-jobcounters: dynamic(true);;
+$include-flamingo-model-hadoop-mapreduce-mapreducejob: dynamic(true);;
+$include-flamingo-model-hadoop-mapreduce-tasks: dynamic(true);;
+$include-flamingo-model-hadoop-yarn-application: dynamic(true);;
 $include-flamingo-model-oozie-bundle-bundleactionmodel: dynamic(true);;
 $include-flamingo-model-oozie-bundle-bundlemodel: dynamic(true);;
 $include-flamingo-model-oozie-coordinator-coordinatoractionmodel: dynamic(true);;
@@ -1095,6 +1124,30 @@ $include-flamingo-view-editor-abstracteditor: dynamic(true);;
 $include-flamingo-view-editor-aceeditor: dynamic(true);;
 $include-flamingo-view-editor-editormixin: dynamic(true);;
 $include-flamingo-view-editor-editorpanel: dynamic(true);;
+$include-flamingo-view-hadoop-mapreduce-configuration: dynamic(true);;
+$include-flamingo-view-hadoop-mapreduce-jobcounters: dynamic(true);;
+$include-flamingo-view-hadoop-mapreduce-jobsummary: dynamic(true);;
+$include-flamingo-view-hadoop-mapreduce-mapreduce: dynamic(true);;
+$include-flamingo-view-hadoop-mapreduce-mapreducecontroller: dynamic(true);;
+$include-flamingo-view-hadoop-mapreduce-mapreducejobs: dynamic(true);;
+$include-flamingo-view-hadoop-mapreduce-mapreducemodel: dynamic(true);;
+$include-flamingo-view-hadoop-mapreduce-mapreducesumchart: dynamic(true);;
+$include-flamingo-view-hadoop-mapreduce-tasks: dynamic(true);;
+$include-flamingo-view-hadoop-mapreduce-attempt-attemptcounter: dynamic(true);;
+$include-flamingo-view-hadoop-mapreduce-attempt-attemptcountercontroller: dynamic(true);;
+$include-flamingo-view-hadoop-mapreduce-attempt-attemptcountermodel: dynamic(true);;
+$include-flamingo-view-hadoop-mapreduce-log-tasklog: dynamic(true);;
+$include-flamingo-view-hadoop-mapreduce-log-tasklogcontroller: dynamic(true);;
+$include-flamingo-view-hadoop-mapreduce-timeline-mrtimeline: dynamic(true);;
+$include-flamingo-view-hadoop-mapreduce-timeline-mrtimelinecontroller: dynamic(true);;
+$include-flamingo-view-hadoop-mapreduce-timeline-timelinemodel: dynamic(true);;
+$include-flamingo-view-hadoop-yarnapplication-allapplications: dynamic(true);;
+$include-flamingo-view-hadoop-yarnapplication-applicationsummary: dynamic(true);;
+$include-flamingo-view-hadoop-yarnapplication-queue: dynamic(true);;
+$include-flamingo-view-hadoop-yarnapplication-typeschart: dynamic(true);;
+$include-flamingo-view-hadoop-yarnapplication-yarnapplication: dynamic(true);;
+$include-flamingo-view-hadoop-yarnapplication-yarnapplicationcontroller: dynamic(true);;
+$include-flamingo-view-hadoop-yarnapplication-yarnapplicationmodel: dynamic(true);;
 $include-flamingo-view-hdfsbrowser-directory: dynamic(true);;
 $include-flamingo-view-hdfsbrowser-file: dynamic(true);;
 $include-flamingo-view-hdfsbrowser-hdfsbrowser: dynamic(true);;
@@ -1371,6 +1424,27 @@ $include-flamingo-view-workflowdesigner-workflowtree-workflowtree: dynamic(true)
 $include-flamingo-view-workflowdesigner-workflowtree-workflowtreecontroller: dynamic(true);;
 $include-flamingo-view-workflowdesigner-workflowtree-workflowtreemodel: dynamic(true);;
 $include-override-data-connection: dynamic(true);;
+$include-override-form-field-vtypes: dynamic(true);;
+$include-portlet-containercolumn: dynamic(true);;
+$include-portlet-highchartcolumn: dynamic(true);;
+$include-portlet-portlet: dynamic(true);;
+$include-portlet-textcolumn: dynamic(true);;
+$include-portlet-columns-bar: dynamic(true);;
+$include-portlet-columns-column: dynamic(true);;
+$include-portlet-columns-gauge: dynamic(true);;
+$include-portlet-columns-line: dynamic(true);;
+$include-portlet-columns-pie: dynamic(true);;
+$include-portlet-columns-text: dynamic(true);;
+$include-util-cronparser: dynamic(true);;
+$include-util-date: dynamic(true);;
+$include-util-iterator: dynamic(true);;
+$include-util-javamap: dynamic(true);;
+$include-util-lang: dynamic(true);;
+$include-util-logger: dynamic(true);;
+$include-util-map: dynamic(true);;
+$include-util-string: dynamic(true);;
+$include-util-taskmanager: dynamic(true);;
+$include-util-ui: dynamic(true);;
 
 
 /* ======================== ETC ======================== */
@@ -1438,6 +1512,22 @@ $current-package: 'charts';
 $current-resource-root: $charts-resource-root;
 $relative-image-path-for-uis: $charts-resource-path;
 @import '../../../../../ext/packages/charts/sass/etc/all';
+
+/* including package portlet */
+$portlet-resource-root: 'portlet' !default;
+$portlet-resource-path: 'portlet/images' !default;
+$current-package: 'portlet';
+$current-resource-root: $portlet-resource-root;
+$relative-image-path-for-uis: $portlet-resource-path;
+@import '../../../../../packages/portlet/sass/etc/all';
+
+/* including package util */
+$util-resource-root: 'util' !default;
+$util-resource-path: 'util/images' !default;
+$current-package: 'util';
+$current-resource-root: $util-resource-root;
+$relative-image-path-for-uis: $util-resource-path;
+@import '../../../../../packages/util/sass/etc/all';
 
 
 /* ======================== VAR ======================== */

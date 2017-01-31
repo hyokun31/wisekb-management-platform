@@ -41,6 +41,17 @@ CONSTANTS.OOZIE.BUNDLE.JOB.DEFINITION           = {};
 CONSTANTS.OOZIE.BUNDLE.JOB.CONFIGURATION        = {};
 CONSTANTS.OOZIE.BUNDLE.JOB.LOG                  = {};
 CONSTANTS.OOZIE.SYSTEMINFO                      = {};
+CONSTANTS.HADOOP                                = {};
+CONSTANTS.HADOOP.NAMENODE                       = {};
+CONSTANTS.HADOOP.DATANODE                       = {};
+CONSTANTS.HADOOP.RESOURCEMANAGER                = {};
+CONSTANTS.HADOOP.YARNAPPLICATION                = {};
+CONSTANTS.HADOOP.MAPREDUCE                      = {};
+CONSTANTS.HADOOP.NODEMANAGER                    = {};
+CONSTANTS.SYSTEM                                = {};
+CONSTANTS.SYSTEM.CODE                           = {};
+CONSTANTS.MONITORING                            = {};
+CONSTANTS.MONITORING.HS                         = {};
 
 CONSTANTS.DESIGNER.TREE.GET             = '/tree/get.json';
 
@@ -168,3 +179,37 @@ CONSTANTS.OOZIE.SYSTEMINFO.OS_ENV_SELECT                            = '/oozie/sy
 CONSTANTS.OOZIE.SYSTEMINFO.CONFIGURATION_DOWNLOAD                   = '/oozie/systeminfo/configuration/download';
 CONSTANTS.OOZIE.SYSTEMINFO.PROPERTIES_DOWNLOAD                      = '/oozie/systeminfo/properties/download';
 CONSTANTS.OOZIE.SYSTEMINFO.SHELLSCRIPT_DOWNLOAD                     = '/oozie/systeminfo/shellscript/download';
+
+
+//ResourceManager
+CONSTANTS.HADOOP.RESOURCEMANAGER.CLUSTERMETRICS        = '/hadoop/resourcemanager/clustermetrics';
+CONSTANTS.HADOOP.RESOURCEMANAGER.CLUSTERMETRICS_LAST   = '/hadoop/resourcemanager/clustermetrics/last';
+CONSTANTS.HADOOP.RESOURCEMANAGER.CONFIGURATION         = '/hadoop/resourcemanager/configuration';
+CONSTANTS.HADOOP.RESOURCEMANAGER.CONFIGURATION_WIDGET  = '/hadoop/resourcemanager/configuration/widget';
+CONSTANTS.HADOOP.RESOURCEMANAGER.APPS                  = {};
+CONSTANTS.HADOOP.RESOURCEMANAGER.APPS.RUNNING          = '/hadoop/resourcemanager/apps/running';
+
+
+// History Server
+CONSTANTS.HADOOP.MAPREDUCE.JOB                         = '/hadoop/mapreduce/jobs/job.json';
+CONSTANTS.HADOOP.MAPREDUCE.JOBS                        = '/hadoop/mapreduce/jobs.json';
+CONSTANTS.HADOOP.MAPREDUCE.CONF                        = '/hadoop/mapreduce/jobs/job/configuration.json';
+CONSTANTS.HADOOP.MAPREDUCE.TASKS                       = '/hadoop/mapreduce/jobs/job/tasks.json';
+CONSTANTS.HADOOP.MAPREDUCE.COUNTERS                    = '/hadoop/mapreduce/jobs/job/counters.json';
+CONSTANTS.HADOOP.MAPREDUCE.TIME_SERIES                 = '/hadoop/mapreduce/jobs/timeseries.json';
+CONSTANTS.HADOOP.MAPREDUCE.LOG                         = '/hadoop/mapreduce/jobs/log';
+CONSTANTS.HADOOP.MAPREDUCE.TIMELINE                    = '/hadoop/mapreduce/timeline';
+CONSTANTS.HADOOP.MAPREDUCE.ATTEMPTS_COUNTER_TREE       = '/hadoop/mapreduce/attempts/counter/tree';
+
+// Yarn Application
+CONSTANTS.HADOOP.YARNAPPLICATION.TIME_SERIES           = '/hadoop/resourcemanager/apps/timeseries.json';
+CONSTANTS.HADOOP.YARNAPPLICATION.ALL_APPICATION        = '/hadoop/resourcemanager/apps/all.json';
+CONSTANTS.HADOOP.YARNAPPLICATION.APP_TYPES             = '/hadoop/resourcemanager/apps/types.json';
+CONSTANTS.HADOOP.YARNAPPLICATION.QUEUES                = '/hadoop/resourcemanager/queues.json';
+CONSTANTS.HADOOP.YARNAPPLICATION.APP_REPORT            = '/hadoop/resourcemanager/app/report.json';
+CONSTANTS.HADOOP.YARNAPPLICATION.APP_LOG               = '/hadoop/resourcemanager/app/log.json';
+CONSTANTS.HADOOP.YARNAPPLICATION.APP_KILL              = '/hadoop/resourcemanager/app/kill.json';
+CONSTANTS.HADOOP.YARNAPPLICATION.APP_DOWNLOAD          = '/hadoop/resourcemanager/app/download.json';
+
+
+CONSTANTS.SYSTEM.CODE.SELECT                                     = '/system/code/select';

@@ -70,6 +70,8 @@ Ext.define('Flamingo.view.main.Main', {
     extend: 'Ext.container.Viewport',
 
     requires: [
+        'Flamingo.view.hadoop.mapreduce.MapReduce',
+        'Flamingo.view.hadoop.yarnapplication.YarnApplication',
         'Flamingo.store.NavigationTree',
         'Ext.button.Segmented',
         'Ext.list.Tree'

@@ -26,5 +26,9 @@ Ext.define('Flamingo.Application', {
         // TODO - Launch the application
     },
 
-    defaultToken : 'designer'
+    defaultToken : 'designer',
+
+    init: function () {
+        format = Ext.String.format;
+    }
 });

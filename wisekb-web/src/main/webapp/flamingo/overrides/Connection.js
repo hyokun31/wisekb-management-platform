@@ -68,7 +68,8 @@ Ext.define('Override.data.Connection', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/xml; charset=utf-8;'
+                'Content-Type': 'application/xml; charset=utf-8;',
+                'X-CSRF-Token': CSRF_TOKEN
             },
             params: params,
             xmlData: body,
@@ -91,8 +92,10 @@ Ext.define('Override.data.Connection', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json; charset=utf-8;'
+                'Content-Type': 'application/json; charset=utf-8;',
+                'X-CSRF-Token': CSRF_TOKEN
             },
+            timeout: 600000,
             params: Ext.encode(map),
             success: onSuccess,
             failure: onFailure
@@ -114,7 +117,8 @@ Ext.define('Override.data.Connection', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'text/plain; charset=utf-8;'
+                'Content-Type': 'text/plain; charset=utf-8;',
+                'X-CSRF-Token': CSRF_TOKEN
             },
             params: params,
             xmlData: body,
@@ -138,7 +142,8 @@ Ext.define('Override.data.Connection', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json; charset=utf-8;'
+                'Content-Type': 'application/json; charset=utf-8;',
+                'X-CSRF-Token': CSRF_TOKEN
             },
             params: params,
             xmlData: body,
@@ -161,7 +166,8 @@ Ext.define('Override.data.Connection', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json; charset=utf-8;'
+                'Content-Type': 'application/json; charset=utf-8;',
+                'X-CSRF-Token': CSRF_TOKEN
             },
             params: map,
             success: onSuccess,
