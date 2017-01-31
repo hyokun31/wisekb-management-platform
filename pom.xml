@@ -16,6 +16,7 @@
         <module>wisekb-agent-oz</module>
         <module>wisekb-collector</module>
         <module>wisekb-web</module>
+        <module>wisekb-agent-rm</module>
     </modules>
 
     <properties>

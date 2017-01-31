@@ -1,5 +1,5 @@
 $app-name:  dynamic( 'Flamingo' );
-$image-search-path: '/Users/Park/App/git/wisekb-management-platform/wisekb-web/src/main/webapp/flamingo/build/production/Flamingo/resources';
+$image-search-path: '/Users/park/App/git/wisekb-management-platform/wisekb-web/src/main/webapp/flamingo/build/production/Flamingo/resources';
 $theme-name:  dynamic( 'theme-triton' );
 $include-ext-abstractcomponent: dynamic(true);;
 $include-ext-abstractcontainer: dynamic(true);;
