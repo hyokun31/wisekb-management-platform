@@ -17,7 +17,7 @@
 
     <!-- ========================= REST TEMPLATE DEFINITION ========================= -->
 
-    <bean id="httpClient" class="org.exem.flamingo.shared.util.SslHttpClientFactoryBean"/>
+    <bean id="httpClient" class="wisekb.shared.util.SslHttpClientFactoryBean"/>
 
     <bean id="sslRestTemplate" class="org.springframework.web.client.RestTemplate">
         <constructor-arg>

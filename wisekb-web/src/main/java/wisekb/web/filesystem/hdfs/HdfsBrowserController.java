@@ -44,6 +44,7 @@ import wisekb.web.filesystem.FileSystemService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.Service;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLEncoder;
@@ -95,27 +96,33 @@ public class HdfsBrowserController {
     @RequestMapping(value = "directory", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public Response directory(@RequestParam(defaultValue = "/") String node) {
-        String username = getSessionUsername();
-        String path = getPathFilter(node);
-        List<FileInfo> directories = fileSystemService.getDirectories(path, true);
-        Response response = new Response();
 
-        if (path.equalsIgnoreCase(hadoopUserHome) && getSessionUserLevel() != 1) {
-            String filter = hadoopUserHome + SystemUtils.FILE_SEPARATOR + username;
-            List<FileInfo> userHomeDirectory = new ArrayList<>();
-            for (FileInfo directory : directories) {
-                if (directory.getFullyQualifiedPath().equalsIgnoreCase(filter)) {
-                    userHomeDirectory.add(0, directory);
-                    break;
+        try {
+            String username = getSessionUsername();
+            String path = getPathFilter(node);
+            List<FileInfo> directories = fileSystemService.getDirectories(path, true);
+            Response response = new Response();
+
+            if (path.equalsIgnoreCase(hadoopUserHome) && getSessionUserLevel() != 1) {
+                String filter = hadoopUserHome + SystemUtils.FILE_SEPARATOR + username;
+                List<FileInfo> userHomeDirectory = new ArrayList<>();
+                for (FileInfo directory : directories) {
+                    if (directory.getFullyQualifiedPath().equalsIgnoreCase(filter)) {
+                        userHomeDirectory.add(0, directory);
+                        break;
+                    }
                 }
+                response.getList().addAll(userHomeDirectory);
+            } else {
+                response.getList().addAll(directories);
             }
-            response.getList().addAll(userHomeDirectory);
-        } else {
-            response.getList().addAll(directories);
+
+            response.setSuccess(true);
+            return response;
+        } catch (Exception ex) {
+            throw new ServiceException(ex);
         }
 
-        response.setSuccess(true);
-        return response;
     }
 
     /**
@@ -239,36 +246,41 @@ public class HdfsBrowserController {
     @RequestMapping(value = "copyDirectory", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public Response copyDirectory(@RequestBody Map<String, String> dirMap) {
-        String username = getSessionUsername();
-        String currentPath = getPathFilter(dirMap.get("currentPath"));
-        String dstPath = getPathFilter(dirMap.get("dstPath"));
-        String directoryName = FileUtils.getDirectoryName(currentPath);
-        String filter = hadoopUserHome + SystemUtils.FILE_SEPARATOR + username;
-        int userLevel = getSessionUserLevel();
 
-        //TODO HDFS 권한관리는 차후에 추가될 예정
+        try {
+            String username = getSessionUsername();
+            String currentPath = getPathFilter(dirMap.get("currentPath"));
+            String dstPath = getPathFilter(dirMap.get("dstPath"));
+            String directoryName = FileUtils.getDirectoryName(currentPath);
+            String filter = hadoopUserHome + SystemUtils.FILE_SEPARATOR + username;
+            int userLevel = getSessionUserLevel();
+
+            //TODO HDFS 권한관리는 차후에 추가될 예정
         /*hdfsBrowserAuthService.validateHdfsHomeWritePermission(currentPath, filter, userLevel);
         List<String> paths = hdfsBrowserAuthService.getHdfsBrowserPatternAll(username);
         String hdfsPathPattern = hdfsBrowserAuthService.validateHdfsPathPattern(currentPath, paths);*/
-        String dirDstPath;
+            String dirDstPath;
 
-        if (dstPath.equalsIgnoreCase("/")) {
-            dirDstPath = dstPath + directoryName;
-        } else {
-            dirDstPath = dstPath + SystemUtils.FILE_SEPARATOR + directoryName;
-        }
+            if (dstPath.equalsIgnoreCase("/")) {
+                dirDstPath = dstPath + directoryName;
+            } else {
+                dirDstPath = dstPath + SystemUtils.FILE_SEPARATOR + directoryName;
+            }
 
-        //TODO HDFS 권한관리는 차후에 추가될 예정
+            //TODO HDFS 권한관리는 차후에 추가될 예정
         /*dirMap.put("username", username);
         dirMap.put("hdfsPathPattern", hdfsPathPattern);
         dirMap.put("condition", "copyDir");
 
         hdfsBrowserAuthService.getHdfsBrowserUserDirAuth(dirMap);*/
-        boolean copied = fileSystemService.copyDirectory(currentPath, dirDstPath, username);
+            boolean copied = fileSystemService.copyDirectory(currentPath, dirDstPath, username);
 
-        Response response = new Response();
-        response.setSuccess(copied);
-        return response;
+            Response response = new Response();
+            response.setSuccess(copied);
+            return response;
+        } catch (Exception ex) {
+            throw new ServiceException(ex);
+        }
     }
 
     /**
@@ -280,36 +292,42 @@ public class HdfsBrowserController {
     @RequestMapping(value = "moveDirectory", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public Response moveDirectory(@RequestBody Map<String, String> dirMap) {
-        String username = getSessionUsername();
-        String currentPath = getPathFilter(dirMap.get("currentPath"));
-        String dstPath = getPathFilter(dirMap.get("dstPath"));
-        String directoryName = FileUtils.getDirectoryName(currentPath);
-        String filter = hadoopUserHome + SystemUtils.FILE_SEPARATOR + username;
-        int userLevel = getSessionUserLevel();
 
-        //TODO HDFS 권한관리는 차후에 추가될 예정
+        try {
+            String username = getSessionUsername();
+            String currentPath = getPathFilter(dirMap.get("currentPath"));
+            String dstPath = getPathFilter(dirMap.get("dstPath"));
+            String directoryName = FileUtils.getDirectoryName(currentPath);
+            String filter = hadoopUserHome + SystemUtils.FILE_SEPARATOR + username;
+            int userLevel = getSessionUserLevel();
+
+            //TODO HDFS 권한관리는 차후에 추가될 예정
         /*hdfsBrowserAuthService.validateHdfsHomeWritePermission(currentPath, filter, userLevel);
         List<String> paths = hdfsBrowserAuthService.getHdfsBrowserPatternAll(username);
         String hdfsPathPattern = hdfsBrowserAuthService.validateHdfsPathPattern(currentPath, paths);*/
-        String dirDstPath;
+            String dirDstPath;
 
-        if (dstPath.equalsIgnoreCase("/")) {
-            dirDstPath = dstPath + directoryName;
-        } else {
-            dirDstPath = dstPath + SystemUtils.FILE_SEPARATOR + directoryName;
-        }
+            if (dstPath.equalsIgnoreCase("/")) {
+                dirDstPath = dstPath + directoryName;
+            } else {
+                dirDstPath = dstPath + SystemUtils.FILE_SEPARATOR + directoryName;
+            }
 
-        //TODO HDFS 권한관리는 차후에 추가될 예정
+            //TODO HDFS 권한관리는 차후에 추가될 예정
         /*dirMap.put("username", username);
         dirMap.put("hdfsPathPattern", hdfsPathPattern);
         dirMap.put("condition", "moveDir");
         hdfsBrowserAuthService.getHdfsBrowserUserDirAuth(dirMap);*/
 
-        boolean moved = fileSystemService.moveDirectory(currentPath, dirDstPath, username);
+            boolean moved = fileSystemService.moveDirectory(currentPath, dirDstPath, username);
 
-        Response response = new Response();
-        response.setSuccess(moved);
-        return response;
+            Response response = new Response();
+            response.setSuccess(moved);
+            return response;
+        } catch (Exception ex) {
+            throw new ServiceException(ex);
+        }
+
     }
 
     /**
@@ -321,27 +339,33 @@ public class HdfsBrowserController {
     @RequestMapping(value = "renameDirectory", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public Response renameDirectory(@RequestBody Map<String, String> dirMap) {
-        String username = getSessionUsername();
-        String currentPath = getPathFilter(dirMap.get("currentPath"));
-        String directoryName = dirMap.get("directoryName");
-        String filter = hadoopUserHome + SystemUtils.FILE_SEPARATOR + username;
-        int userLevel = getSessionUserLevel();
 
-        //TODO HDFS 권한관리는 차후에 추가될 예정
-        /*hdfsBrowserAuthService.validateHdfsHomeWritePermission(currentPath, filter, userLevel);
-        List<String> paths = hdfsBrowserAuthService.getHdfsBrowserPatternAll(username);
-        String hdfsPathPattern = hdfsBrowserAuthService.validateHdfsPathPattern(currentPath, paths);
+        try {
+            String username = getSessionUsername();
+            String currentPath = getPathFilter(dirMap.get("currentPath"));
+            String directoryName = dirMap.get("directoryName");
+            String filter = hadoopUserHome + SystemUtils.FILE_SEPARATOR + username;
+            int userLevel = getSessionUserLevel();
 
-        dirMap.put("username", username);
-        dirMap.put("hdfsPathPattern", hdfsPathPattern);
-        dirMap.put("condition", "renameDir");
+            //TODO HDFS 권한관리는 차후에 추가될 예정
+            /*hdfsBrowserAuthService.validateHdfsHomeWritePermission(currentPath, filter, userLevel);
+            List<String> paths = hdfsBrowserAuthService.getHdfsBrowserPatternAll(username);
+            String hdfsPathPattern = hdfsBrowserAuthService.validateHdfsPathPattern(currentPath, paths);
 
-        hdfsBrowserAuthService.getHdfsBrowserUserDirAuth(dirMap);*/
-        boolean renamed = fileSystemService.renameDirectory(currentPath, directoryName, username);
+            dirMap.put("username", username);
+            dirMap.put("hdfsPathPattern", hdfsPathPattern);
+            dirMap.put("condition", "renameDir");
 
-        Response response = new Response();
-        response.setSuccess(renamed);
-        return response;
+            hdfsBrowserAuthService.getHdfsBrowserUserDirAuth(dirMap);*/
+            boolean renamed = fileSystemService.renameDirectory(currentPath, directoryName, username);
+
+            Response response = new Response();
+            response.setSuccess(renamed);
+            return response;
+        } catch (Exception ex) {
+            throw new ServiceException(ex);
+        }
+
     }
 
     /**
@@ -353,26 +377,32 @@ public class HdfsBrowserController {
     @RequestMapping(value = "deleteDirectory", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public Response deleteDirectory(@RequestBody Map<String, String> dirMap) {
-        String username = getSessionUsername();
-        String currentPath = getPathFilter(dirMap.get("currentPath"));
-        String filter = hadoopUserHome + SystemUtils.FILE_SEPARATOR + username;
-        int userLevel = getSessionUserLevel();
 
-        //TODO HDFS 권한관리는 차후에 추가될 예정
-        /*hdfsBrowserAuthService.validateHdfsHomeWritePermission(currentPath, filter, userLevel);
-        List<String> paths = hdfsBrowserAuthService.getHdfsBrowserPatternAll(username);
-        String hdfsPathPattern = hdfsBrowserAuthService.validateHdfsPathPattern(currentPath, paths);
+        try {
+            String username = getSessionUsername();
+            String currentPath = getPathFilter(dirMap.get("currentPath"));
+            String filter = hadoopUserHome + SystemUtils.FILE_SEPARATOR + username;
+            int userLevel = getSessionUserLevel();
 
-        dirMap.put("username", username);
-        dirMap.put("hdfsPathPattern", hdfsPathPattern);
-        dirMap.put("condition", "deleteDir");
+            //TODO HDFS 권한관리는 차후에 추가될 예정
+            /*hdfsBrowserAuthService.validateHdfsHomeWritePermission(currentPath, filter, userLevel);
+            List<String> paths = hdfsBrowserAuthService.getHdfsBrowserPatternAll(username);
+            String hdfsPathPattern = hdfsBrowserAuthService.validateHdfsPathPattern(currentPath, paths);
 
-        hdfsBrowserAuthService.getHdfsBrowserUserDirAuth(dirMap);*/
-        boolean deleted = fileSystemService.deleteDirectory(currentPath, username);
+            dirMap.put("username", username);
+            dirMap.put("hdfsPathPattern", hdfsPathPattern);
+            dirMap.put("condition", "deleteDir");
 
-        Response response = new Response();
-        response.setSuccess(deleted);
-        return response;
+            hdfsBrowserAuthService.getHdfsBrowserUserDirAuth(dirMap);*/
+            boolean deleted = fileSystemService.deleteDirectory(currentPath, username);
+
+            Response response = new Response();
+            response.setSuccess(deleted);
+            return response;
+        } catch (Exception ex) {
+            throw new ServiceException(ex);
+        }
+
     }
 
     /**
@@ -384,24 +414,30 @@ public class HdfsBrowserController {
     @RequestMapping(value = "mergeFiles", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public Response mergeFiles(@RequestBody Map<String, String> dirMap) {
-        String username = getSessionUsername();
-        String currentPath = getPathFilter(dirMap.get("currentPath"));
-        String dstPath = getPathFilter(dirMap.get("dstPath"));
 
-        //TODO HDFS 권한관리는 차후에 추가될 예정
-        /*List<String> paths = hdfsBrowserAuthService.getHdfsBrowserPatternAll(username);
-        String hdfsPathPattern = hdfsBrowserAuthService.validateHdfsPathPattern(currentPath, paths);
+        try {
+            String username = getSessionUsername();
+            String currentPath = getPathFilter(dirMap.get("currentPath"));
+            String dstPath = getPathFilter(dirMap.get("dstPath"));
 
-        dirMap.put("username", username);
-        dirMap.put("hdfsPathPattern", hdfsPathPattern);
-        dirMap.put("condition", "mergeDir");
+            //TODO HDFS 권한관리는 차후에 추가될 예정
+            /*List<String> paths = hdfsBrowserAuthService.getHdfsBrowserPatternAll(username);
+            String hdfsPathPattern = hdfsBrowserAuthService.validateHdfsPathPattern(currentPath, paths);
 
-        hdfsBrowserAuthService.getHdfsBrowserUserDirAuth(dirMap);*/
-        boolean merged = fileSystemService.mergeFiles(currentPath, dstPath, username);
+            dirMap.put("username", username);
+            dirMap.put("hdfsPathPattern", hdfsPathPattern);
+            dirMap.put("condition", "mergeDir");
 
-        Response response = new Response();
-        response.setSuccess(merged);
-        return response;
+            hdfsBrowserAuthService.getHdfsBrowserUserDirAuth(dirMap);*/
+            boolean merged = fileSystemService.mergeFiles(currentPath, dstPath, username);
+
+            Response response = new Response();
+            response.setSuccess(merged);
+            return response;
+        } catch (Exception ex) {
+            throw new ServiceException(ex);
+        }
+
     }
 
     /**
@@ -467,31 +503,36 @@ public class HdfsBrowserController {
     @ResponseStatus(HttpStatus.OK)
     public Response setPermission(@RequestBody Map permissionMap) {
 
-        String username = getSessionUsername();
-        String currentPath = getPathFilter((String) permissionMap.get("currentPath"));
-        String fileStatus = (String) permissionMap.get("fileStatus");
+        try {
+            String username = getSessionUsername();
+            String currentPath = getPathFilter((String) permissionMap.get("currentPath"));
+            String fileStatus = (String) permissionMap.get("fileStatus");
 
-        //TODO HDFS 권한관리는 차후에 추가될 예정
-        /*List<String> paths = hdfsBrowserAuthService.getHdfsBrowserPatternAll(username);
-        String hdfsPathPattern = hdfsBrowserAuthService.validateHdfsPathPattern(currentPath, paths);
+            //TODO HDFS 권한관리는 차후에 추가될 예정
+            /*List<String> paths = hdfsBrowserAuthService.getHdfsBrowserPatternAll(username);
+            String hdfsPathPattern = hdfsBrowserAuthService.validateHdfsPathPattern(currentPath, paths);
 
-        permissionMap.put("username", username);
-        permissionMap.put("hdfsPathPattern", hdfsPathPattern);
+            permissionMap.put("username", username);
+            permissionMap.put("hdfsPathPattern", hdfsPathPattern);
 
-        if (fileStatus.equalsIgnoreCase("DIRECTORY")) {
-            permissionMap.put("condition", "permissionDir");
-        } else {
-            permissionMap.put("condition", "permissionFile");
+            if (fileStatus.equalsIgnoreCase("DIRECTORY")) {
+                permissionMap.put("condition", "permissionDir");
+            } else {
+                permissionMap.put("condition", "permissionFile");
+            }
+
+            permissionMap.put("currentPath", currentPath); // 권한을 변경할 디렉토리 또는 파일의 경로 업데이트
+
+            hdfsBrowserAuthService.getHdfsBrowserUserDirAuth(permissionMap);*/
+            boolean changed = fileSystemService.setPermission(permissionMap, username);
+
+            Response response = new Response();
+            response.setSuccess(changed);
+            return response;
+        } catch (Exception ex) {
+            throw new ServiceException(ex);
         }
 
-        permissionMap.put("currentPath", currentPath); // 권한을 변경할 디렉토리 또는 파일의 경로 업데이트
-
-        hdfsBrowserAuthService.getHdfsBrowserUserDirAuth(permissionMap);*/
-        boolean changed = fileSystemService.setPermission(permissionMap, username);
-
-        Response response = new Response();
-        response.setSuccess(changed);
-        return response;
     }
 
     /**
@@ -503,29 +544,35 @@ public class HdfsBrowserController {
     @RequestMapping(value = "copyFiles", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public Response copyFiles(@RequestBody Map<String, String> fileMap) {
-        String username = getSessionUsername();
-        String currentPath = getPathFilter(fileMap.get("currentPath"));
-        String files = fileMap.get("files");
-        String dstPath = getPathFilter(fileMap.get("dstPath"));
-        String[] fromItems = files.split(",");
-        List<String> srcFileList = new ArrayList<>();
-        Collections.addAll(srcFileList, fromItems);
 
-        //TODO HDFS 권한관리는 차후에 추가될 예정
-        /*List<String> paths = hdfsBrowserAuthService.getHdfsBrowserPatternAll(username);
-        String hdfsPathPattern = hdfsBrowserAuthService.validateHdfsPathPattern(currentPath, paths);
+        try {
+            String username = getSessionUsername();
+            String currentPath = getPathFilter(fileMap.get("currentPath"));
+            String files = fileMap.get("files");
+            String dstPath = getPathFilter(fileMap.get("dstPath"));
+            String[] fromItems = files.split(",");
+            List<String> srcFileList = new ArrayList<>();
+            Collections.addAll(srcFileList, fromItems);
 
-        fileMap.put("username", username);
-        fileMap.put("hdfsPathPattern", hdfsPathPattern);
-        fileMap.put("condition", "copyFile");
+            //TODO HDFS 권한관리는 차후에 추가될 예정
+            /*List<String> paths = hdfsBrowserAuthService.getHdfsBrowserPatternAll(username);
+            String hdfsPathPattern = hdfsBrowserAuthService.validateHdfsPathPattern(currentPath, paths);
 
-        hdfsBrowserAuthService.getHdfsBrowserUserFileAuth(fileMap);*/
-        List<String> copiedFiles = fileSystemService.copyFiles(srcFileList, dstPath, username);
+            fileMap.put("username", username);
+            fileMap.put("hdfsPathPattern", hdfsPathPattern);
+            fileMap.put("condition", "copyFile");
 
-        Response response = new Response();
-        response.getList().addAll(copiedFiles);
-        response.setSuccess(true);
-        return response;
+            hdfsBrowserAuthService.getHdfsBrowserUserFileAuth(fileMap);*/
+            List<String> copiedFiles = fileSystemService.copyFiles(srcFileList, dstPath, username);
+
+            Response response = new Response();
+            response.getList().addAll(copiedFiles);
+            response.setSuccess(true);
+            return response;
+        } catch (Exception ex) {
+            throw new ServiceException(ex);
+        }
+
     }
 
     /**

@@ -25,7 +25,7 @@
 
     <mvc:resources mapping="/**" location="/flamingo/"/>
 
-    <context:component-scan base-package="org.exem.flamingo"/>
+    <context:component-scan base-package="wisekb.web"/>
 
     <!-- ========================= MESSAGE SOURCE DEFINITION ========================= -->
 
@@ -153,15 +153,15 @@
     </bean>
 
     <!-- ========================= OOZIE CLIENT CONFIG DEFINITION ========================= -->
-    <bean id="oozieClient" class="org.exem.flamingo.shared.util.OozieClientFactoryBean" />
+    <bean id="oozieClient" class="wisekb.shared.util.OozieClientFactoryBean" />
 
     <!-- ========================= APPLICATION CONTEXT SERVICE DEFINITION ========================= -->
 
-    <bean id="applicationContextService" class="org.exem.flamingo.shared.util.ApplicationContextRegistry"/>
+    <bean id="applicationContextService" class="wisekb.shared.util.ApplicationContextRegistry"/>
 
     <!-- ========================= JACKSON OBJECT MAPPER DEFINITION ========================= -->
 
-    <bean id="jacksonObjectMapper" class="org.exem.flamingo.shared.util.ObjectMapperFactoryBean">
+    <bean id="jacksonObjectMapper" class="wisekb.shared.util.ObjectMapperFactoryBean">
         <property name="indentOutput" value="true"/>
     </bean>
 
